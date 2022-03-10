@@ -1,0 +1,24 @@
+/*
+Description:
+Write simple .camelCase method (camel_case function in PHP, CamelCase in C# or camelCase in Java) for strings. All words must have their first letter capitalized without spaces.
+
+For instance:
+
+camelCase("hello case"); // => "HelloCase"
+camelCase("camel case word"); // => "CamelCaseWord"
+Don't forget to rate this kata! Thanks :)
+*/
+
+import java.util.stream.*;
+import java.util.Arrays;
+
+public class Solution {
+
+    public static String camelCase(String str) {
+      if(str.isEmpty())
+        return str;
+      return Arrays.stream(str.split(" ")).filter(x -> !x.isEmpty()).map(x -> {
+          return Character.toString(x.charAt(0)).toUpperCase() + (x.substring(1,x.length()));
+        }).collect(Collectors.joining(""));
+    }
+}
